@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../Hooks/UseFetchGif";
-
+//comunicacion entre componentes = props (propiedades)
 export const GifGrid = ({category}) => {
     const {images, isLoading} = useFetchGifs(category);
-    console.log({images,isLoading});	
+    // console.log({images,isLoading});	
     return (
     <>
         <h3>{category}</h3>
 
-	<h2>Cargando...</h2>	
+		
 
         <div>
             {
@@ -17,6 +16,7 @@ export const GifGrid = ({category}) => {
                     <GifItem 
                         key={image.id}
                         {...image}
+                        url={image.images.downsized_medium.url} 
                     />
                 ))
             }
